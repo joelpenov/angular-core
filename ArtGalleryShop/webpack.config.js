@@ -20,10 +20,11 @@ const webpackPlugin = new webpack.ProvidePlugin({
 });
 
 module.exports = {
-    entry: "./wwwroot/assets/js/app.js",
+    entry: { main: "./wwwroot/assets/js/app.js"},
     output: {
         path: path.resolve(__dirname, 'wwwroot/dist'),
-        filename: 'bundle.js'
+        filename: 'bundle.js',
+        publicPath: 'dist/'
     },
     plugins: [
         extractCSS,
