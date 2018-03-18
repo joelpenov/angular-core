@@ -1,5 +1,8 @@
 ﻿import { getText } from './lib';
 
+import '../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import '../css/custom.css';
+
 import ES6Lib from './es6codelib';
 
 document.getElementById("fillthis").innerHTML = getText();
