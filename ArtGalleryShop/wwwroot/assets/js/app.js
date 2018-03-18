@@ -1,11 +1,14 @@
 ﻿import { getText } from './lib';
 
 import ES6Lib from './es6codelib';
+import '../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import '../css/template.css';
+import '../css/custom.css';
 
 document.getElementById("fillthis").innerHTML = getText();
 
 const Sample = (age) => {
-    return `${age} anios de edad`;
+    return `${age} anios de edd`;
 };
 
 $("#fillthisj").html(Sample(25));

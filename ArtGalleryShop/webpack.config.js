@@ -9,7 +9,7 @@ const javaScriptTranspilerRule = {
 
 const cssTranspilerRule = {
     test: /\.css$/,
-    use: extractCSS.extract(['css-loader?minimize'])
+    use: extractCSS.extract(["css-loader?minimize"])
 };
 
 const webpackPlugin = new webpack.ProvidePlugin({
@@ -18,6 +18,11 @@ const webpackPlugin = new webpack.ProvidePlugin({
     'window.jQuery': 'jquery',
     Popper: ['popper.js', 'default'],    
 });
+
+const urlLoaderRule = {
+    test: /\.(png|woff|woff2|eot|ttf|svg)$/,
+    loader: 'url-loader?limit=100000'
+}
 
 module.exports = {
     entry: { main: "./wwwroot/assets/js/app.js"},
@@ -32,6 +37,10 @@ module.exports = {
         new webpack.optimize.UglifyJsPlugin()
     ],
     module: {
-        rules: [javaScriptTranspilerRule, cssTranspilerRule]
+        rules: [
+            javaScriptTranspilerRule,
+            cssTranspilerRule,
+            urlLoaderRule
+        ]
     }
 };

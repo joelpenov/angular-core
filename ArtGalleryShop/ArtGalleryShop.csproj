@@ -6,9 +6,6 @@
 
 
   <ItemGroup>
-    <Folder Include="wwwroot\assets\css\" />
-    <Folder Include="wwwroot\assets\images\" />
-    <Folder Include="wwwroot\assets\fonts\" />
     <Folder Include="wwwroot\dist\" />
   </ItemGroup>
 
