@@ -1,5 +1,7 @@
 ﻿const path = require("path");
 const webpack = require('webpack');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const extractCSS = new ExtractTextPlugin('bundle.css');
 
 const javaScriptTranspilerRule = {
      test: /\.js?$/, use: { loader: 'babel-loader', options: { presets: ['@babel/preset-env'] } } 
@@ -7,15 +9,14 @@ const javaScriptTranspilerRule = {
 
 const cssTranspilerRule = {
     test: /\.css$/,
-    use: [{ loader: "style-loader" },
-    { loader: "css-loader" }]
+    use: extractCSS.extract(['css-loader?minimize'])
 };
 
-const webpackPluging = new webpack.ProvidePlugin({
+const webpackPlugin = new webpack.ProvidePlugin({
     $: 'jquery',
     jQuery: 'jquery',
     'window.jQuery': 'jquery',
-    Popper: ['popper.js', 'default']
+    Popper: ['popper.js', 'default'],    
 });
 
 module.exports = {
@@ -24,7 +25,11 @@ module.exports = {
         path: path.resolve(__dirname, 'wwwroot/dist'),
         filename: 'bundle.js'
     },
-    plugins: [webpackPluging],
+    plugins: [
+        extractCSS,
+        webpackPlugin,
+        new webpack.optimize.UglifyJsPlugin()
+    ],
     module: {
         rules: [javaScriptTranspilerRule, cssTranspilerRule]
     }
