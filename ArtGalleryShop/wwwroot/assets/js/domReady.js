@@ -1,4 +1,7 @@
-﻿
+﻿//import { getText } from './lib';
+//import ES6Lib from './es6codelib';
+
+
 (function ($) {
     "use strict";
 
@@ -191,24 +194,11 @@
             $(this).addClass('is-actived');
         });
     });
-
-
-
+    
 })(jQuery);
 
 $(function () {
-    document.getElementById("fillthis").innerHTML = getText();
-
-    const Sample = (age) => {
-        return `${age} anios de edd`;
-    };
-
-    $("#fillthisj").html(Sample(25));
-
-    let myES6Object = new ES6Lib();
-    $('#fillthiswithes6lib').html(myES6Object.getData());
-
-    $('.parallax100').parallax100();
+        $('.parallax100').parallax100();
 });
 
 module.hot.accept();

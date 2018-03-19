@@ -11,7 +11,7 @@ import "../../../node_modules/bootstrap/dist/js/bootstrap"
 import "../../../node_modules/Select2/select2"
 import "../../../node_modules/moment/moment"
 import "../../../node_modules/daterangepicker/daterangepicker"
-import "../../../node_modules/slick/index"
+import "../../../node_modules/slick-carousel/slick/slick"
 import "../../../node_modules/lightbox/dist/bundle-main"
 
 import "./countdowntime"
@@ -19,8 +19,6 @@ import "./slick-custom"
 import "./domReady"
 import "./parallax100"
 
-import ES6Lib from './es6codelib';
-import { getText } from './lib';
 import './domReady';
 
 module.hot.accept();
