@@ -1,0 +1,30 @@
+﻿@model IEnumerable<Product>
+@{
+    ViewData["Title"] = "Products";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container">
+    
+    <h2>Products</h2>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">Artist</th>
+            <th scope="col">Title</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var product in @Model)
+        {
+            <tr>
+                <td>@product.Artist</td>
+                <td>@product.Title</td>
+            </tr>
+        }
+    
+        </tbody>
+    </table>
+</div>
+
+

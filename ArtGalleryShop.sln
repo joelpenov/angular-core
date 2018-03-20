@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27428.2005
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArtGalleryShop", "ArtGalleryShop\ArtGalleryShop.csproj", "{3D0938D3-A3D7-44A7-BD40-89E9FE45240D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ArtGalleryShop", "ArtGalleryShop\ArtGalleryShop.csproj", "{3D0938D3-A3D7-44A7-BD40-89E9FE45240D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArtGalleryShop.Data", "ArtGalleryShop.Data\ArtGalleryShop.Data.csproj", "{8529349B-BEC2-445E-8271-0189807BFB5A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ArtGalleryShop.Data", "ArtGalleryShop.Data\ArtGalleryShop.Data.csproj", "{8529349B-BEC2-445E-8271-0189807BFB5A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

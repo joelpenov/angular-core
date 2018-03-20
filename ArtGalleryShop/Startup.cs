@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using ArtGalleryShop.ArtGalleryContext;
+using ArtGalleryShop.Helpers;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -26,6 +27,7 @@ namespace ArtGalleryShop
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+            services.AddTransient<Seeder>();
             services.AddDbContext<ArtGalleryShopDbContext>(cfn=> 
             {
                 cfn.UseSqlServer(_configuration.GetConnectionString("ArtGalleryShopConnectionString"));
@@ -50,9 +52,21 @@ namespace ArtGalleryShop
             }
 
             app.UseStaticFiles();
+
             app.UseMvc(routes => {
-                routes.MapRoute("default", "{controller=Home}/{action=Index}/{id?}");
+                routes.MapRoute(
+                        name: "default",
+                        template: "{controller=Home}/{action=Index}/{id?}");
             });
+
+            if (env.IsDevelopment())
+            {
+                using (var scope = app.ApplicationServices.CreateScope())
+                {
+                    var seeder = scope.ServiceProvider.GetService<Seeder>();
+                    seeder.Seed();
+                }
+            }
             
         }
     }

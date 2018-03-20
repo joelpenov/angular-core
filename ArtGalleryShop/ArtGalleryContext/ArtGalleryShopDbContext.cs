@@ -1,4 +1,4 @@
-﻿using DutchTreat.Data.Entities;
+﻿using ArtGalleryShop.Data.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace ArtGalleryShop.ArtGalleryContext
@@ -10,7 +10,7 @@ namespace ArtGalleryShop.ArtGalleryContext
 
         }
 
-        DbSet<Product> Products { get; set; }
-        DbSet<Order> Orders { get; set; }
+        public DbSet<Product> Products { get; set; }
+        public DbSet<Order> Orders { get; set; }
     }
 }
