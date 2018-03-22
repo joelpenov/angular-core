@@ -11,6 +11,8 @@ using Microsoft.AspNetCore.SpaServices.Webpack;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 
 namespace ArtGalleryShop
 {
@@ -26,7 +28,14 @@ namespace ArtGalleryShop
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc();
+            services.AddScoped<IArtGalleryContext, ArtGalleryContext.ArtGalleryContext>();
+            services.AddMvc()
+                .AddJsonOptions(jsonConf =>
+                    {
+                        jsonConf.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
+                        jsonConf.SerializerSettings.ContractResolver = new DefaultContractResolver();
+                    });
+
             services.AddTransient<Seeder>();
             services.AddDbContext<ArtGalleryShopDbContext>(cfn=> 
             {
@@ -43,7 +52,8 @@ namespace ArtGalleryShop
                 app.UseDeveloperExceptionPage();
                 app.UseWebpackDevMiddleware(new WebpackDevMiddlewareOptions
                 {
-                    HotModuleReplacement = true
+                    HotModuleReplacement = true,
+                    HotModuleReplacementEndpoint = "/dist/__webpack_hmr"
                 });
             }
             else

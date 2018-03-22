@@ -1,14 +1,13 @@
 ﻿using ArtGalleryShop.ArtGalleryContext;
 using Microsoft.AspNetCore.Mvc;
-using System.Linq;
 
 namespace ArtGalleryShop.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ArtGalleryShopDbContext _galleryContext;
+        private readonly IArtGalleryContext _galleryContext;
 
-        public HomeController(ArtGalleryShopDbContext galleryContext)
+        public HomeController(IArtGalleryContext galleryContext)
         {
             _galleryContext = galleryContext;
         }
@@ -26,8 +25,7 @@ namespace ArtGalleryShop.Controllers
 
         public IActionResult Products()
         {
-            var result = _galleryContext.Products.ToList();
-            return View(result);
+            return View(_galleryContext.GetProducts());
         }
     }
 }

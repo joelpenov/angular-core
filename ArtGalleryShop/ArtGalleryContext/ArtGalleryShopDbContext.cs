@@ -7,7 +7,6 @@ namespace ArtGalleryShop.ArtGalleryContext
     {
         public ArtGalleryShopDbContext(DbContextOptions<ArtGalleryShopDbContext> options) : base(options)
         {
-
         }
 
         public DbSet<Product> Products { get; set; }

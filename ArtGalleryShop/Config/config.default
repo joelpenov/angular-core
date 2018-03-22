@@ -1,5 +1,10 @@
 ﻿{
   "ConnectionStrings": {
     "ArtGalleryShopConnectionString": "<ConnectionStringGoesHere>"
+  },
+  "Logging": {
+    "LogLevel": {
+      "Default": "Warning"
+    }
   }
 }
